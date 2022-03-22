@@ -1,6 +1,8 @@
-import "dotenv/config";
+import dotenv from "dotenv";
+// Configuración especial para leer el archivo .env en la raíz del Repo
+dotenv.config({ path: "../.env" });
+
 import app from "./app";
-import notion from "./notion";
 
 const PORT = process.env.PORT || 3000;
 
