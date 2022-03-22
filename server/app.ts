@@ -1,6 +1,6 @@
 import express from "express";
-import cors from "cors";
 import morgan from "morgan";
+import cors from "cors";
 import path from "path";
 
 import { blogRoutes, portfolioRoutes } from "./routes";

@@ -1,17 +1,21 @@
 import { Request, Response } from "express";
 import { blogServices } from "../services";
+import { Page } from "../interfaces";
 
 const blogController = {
-  getPublicaciones: async (req: Request, res: Response) => {
+  /**
+   * Get from Notion the posts with the Tag "Publicado"
+   */
+  getPosts: async (req: Request, res: Response) => {
     try {
       const { results } = await blogServices.fetchPostDatabase();
 
       const promises = results.map((page) => {
-        return blogServices.getPostById(page.id);
+        return blogServices.fetchPostById(page.id);
       });
 
-      const fullFilled = await Promise.all(promises);
-      res.json(fullFilled);
+      const pages = (await Promise.all(promises)) as Page[];
+      res.json(pages);
     } catch (error) {
       res
         .status(500)

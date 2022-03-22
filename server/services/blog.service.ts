@@ -17,7 +17,7 @@ const blogServices = {
     });
   },
 
-  getPostById: async (pageId: string) => {
+  fetchPostById: async (pageId: string) => {
     return await notion.pages.retrieve({ page_id: pageId });
   },
 };
