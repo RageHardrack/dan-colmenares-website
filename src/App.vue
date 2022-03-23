@@ -4,7 +4,7 @@ import Footer from "./components/Layout/Footer.vue";
 </script>
 
 <template>
-  <section class="flex flex-col justify-between h-screen">
+  <section class="flex flex-col justify-between min-h-screen">
     <Navbar />
 
     <main class="container flex-1 py-8">
