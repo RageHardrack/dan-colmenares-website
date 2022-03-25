@@ -1,15 +1,35 @@
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
+import { ref, onBeforeMount } from "vue";
 import { BlogService } from "../../services";
+import Grid from "../../components/Layout/Grid.vue";
+import LoadingView from "../../components/Layout/LoadingView.vue";
+import { Publicacion } from "../../interfaces";
 
-const posts = ref([]);
+const posts = ref<Publicacion[]>([]);
+const loading = ref(false);
 
-onMounted(async () => {
-  const res = await BlogService.getPosts();
-  console.log({ res });
+onBeforeMount(async () => {
+  try {
+    loading.value = true;
+    const { data } = await BlogService.getPosts();
+    posts.value = data;
+  } catch (error) {
+    console.error(error);
+    posts.value = [];
+  } finally {
+    loading.value = false;
+  }
 });
 </script>
 
 <template>
-  <div>hola Blog</div>
+  <LoadingView loadMessage="Cargando Publicaciones" v-if="loading" />
+
+  <Grid v-else>
+    <BlogCard
+      v-for="{ properties, id } in posts"
+      :card="properties"
+      :key="id"
+    />
+  </Grid>
 </template>

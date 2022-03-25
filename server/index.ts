@@ -1,6 +1,6 @@
-import dotenv from "dotenv";
+import { config } from "dotenv";
 // Configuración especial para leer el archivo .env en la raíz del Repo
-dotenv.config({ path: "../.env" });
+config({ path: "../.env" });
 
 import app from "./app";
 

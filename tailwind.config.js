@@ -9,13 +9,22 @@ module.exports = {
         "black-coffee": "#322A26",
         bone: "#E0DDCF",
       },
-      container: {
-        center: true,
-        padding: {
-          DEFAULT: "1rem",
-          sm: "1.5rem",
-          lg: "2rem",
-        },
+    },
+    keyframes: {
+      expand: {
+        "0%": { transform: "scale(0.8)" },
+        "25%": { transform: "scale(1.33)" },
+      },
+    },
+    animation: {
+      expand: "expand 1s ease-in-out infinite",
+    },
+    container: {
+      center: true,
+      padding: {
+        DEFAULT: "1rem",
+        sm: "1.5rem",
+        lg: "2rem",
       },
     },
   },
