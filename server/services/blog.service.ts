@@ -14,7 +14,7 @@ const blogServices = {
           },
         ],
       },
-      sorts: [{ property: "Fecha_Publicación", direction: "ascending" }],
+      sorts: [{ property: "Fecha_Publicación", direction: "descending" }],
     });
   },
 

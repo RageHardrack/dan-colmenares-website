@@ -7,7 +7,9 @@ defineProps<Props>();
 </script>
 
 <template>
-  <span :class="`flex px-4 py-1 rounded-lg bg-gold ${customClass}`">
+  <span
+    :class="`flex text-sm px-2 py-1 rounded-lg font-semibold bg-gold ${customClass}`"
+  >
     <slot />
   </span>
 </template>

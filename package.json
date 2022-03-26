@@ -9,6 +9,7 @@
     "start": "yarn --cwd ./server/ start"
   },
   "dependencies": {
+    "@vueuse/core": "8.2.0",
     "axios": "0.26.1",
     "vue": "3.2.31",
     "vue-router": "4.0.14"
