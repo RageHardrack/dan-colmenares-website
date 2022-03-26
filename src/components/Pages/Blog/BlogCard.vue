@@ -26,16 +26,12 @@ const fecha = DateTime.fromISO(Fecha_Publicacion.date.start.toString())
 <template>
   <BaseCard :isLink="true">
     <template #header>
-      <img
-        :src="cover"
-        :alt="`${postTitle} cover`"
-        class="mb-4 aspect-square"
-      />
-      <Header as="h2" customClass="text-gold">{{ postTitle }}</Header>
-      <p class="text-gray-400">Publicado el {{ fecha }}</p>
+      <img :src="cover" :alt="`${postTitle} cover`" class="aspect-square" />
     </template>
 
     <template #content>
+      <Header as="h2" customClass="text-gold">{{ postTitle }}</Header>
+      <p class="text-gray-400">Publicado el {{ fecha }}</p>
       <p class="text-bone">{{ resumen }}</p>
     </template>
 

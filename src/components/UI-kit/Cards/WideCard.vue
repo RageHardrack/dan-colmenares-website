@@ -8,7 +8,7 @@ const { isLink = false } = defineProps<Props>();
 
 <template>
   <article
-    :class="`flex flex-col md:flex-row items-center space-y-8 md:space-y-0 rounded-lg md:max-h-96 overflow-hidden ${
+    :class="`flex flex-col md:flex-row items-center space-y-4 md:space-y-0 rounded-lg md:max-h-96 overflow-hidden ${
       isLink ? 'cursor-pointer' : 'cursor-auto'
     }`"
   >
@@ -16,7 +16,9 @@ const { isLink = false } = defineProps<Props>();
       <slot name="aside" />
     </aside>
 
-    <section class="flex flex-col justify-between w-full p-4 md:h-96 md:w-1/3">
+    <section
+      class="flex flex-col justify-between w-full p-4 space-y-4 md:h-96 md:w-1/3"
+    >
       <header class="flex flex-wrap items-center justify-start">
         <slot name="header" />
       </header>
