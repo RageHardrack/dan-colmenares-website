@@ -10,11 +10,12 @@ interface Props {
 
 const { card } = defineProps<Props>();
 
-const { Image_URL, Tags, Fecha_Publicación, Slug, Post } = card;
+const { Image_URL, Tags, Fecha_Publicacion, Slug, Post } = card;
 
 const postTitle = Post.title[0].text.content;
 const etiquetas = Tags.multi_select;
 const cover = Image_URL.rich_text[0].plain_text;
+const slug = Slug.rich_text[0].plain_text;
 </script>
 
 <template>
@@ -22,7 +23,7 @@ const cover = Image_URL.rich_text[0].plain_text;
     <template #header>
       <img :src="cover" :alt="`${postTitle} cover`" class="mb-4" />
       <Header as="h2" customClass="text-gold">{{ postTitle }}</Header>
-      <p class="text-bone">Publicado el {{ Fecha_Publicación.date.start }}</p>
+      <p class="text-bone">Publicado el {{ Fecha_Publicacion.date.start }}</p>
     </template>
 
     <template #footer>

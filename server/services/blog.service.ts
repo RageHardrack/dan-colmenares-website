@@ -1,9 +1,9 @@
-import notion, { BLOG_DATABASE } from "../notion";
+import notion, { BLOG_ID } from "../notion";
 
 const blogServices = {
   fetchPostDatabase: async () => {
     return await notion.databases.query({
-      database_id: BLOG_DATABASE,
+      database_id: BLOG_ID,
       filter: {
         and: [
           {
@@ -14,7 +14,7 @@ const blogServices = {
           },
         ],
       },
-      sorts: [{ property: "Fecha_Publicación", direction: "descending" }],
+      sorts: [{ property: "Fecha_Publicacion", direction: "descending" }],
     });
   },
 

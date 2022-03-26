@@ -27,7 +27,7 @@ export interface Properties {
   Status: Status;
   Image_URL: ImageURL;
   Tags: Tags;
-  Fecha_Publicación: FechaDePublicacion;
+  Fecha_Publicacion: FechaDePublicacion;
   Slug: ImageURL;
   Post: Post;
 }
