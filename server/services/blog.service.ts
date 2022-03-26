@@ -22,6 +22,15 @@ const blogServices = {
   fetchPostById: async (pageId: string) => {
     return await notion.pages.retrieve({ page_id: pageId });
   },
+
+  fetchPostContent: async (blockId: string) => {
+    const { results } = await notion.blocks.children.list({
+      block_id: blockId,
+      page_size: 100,
+    });
+
+    return results.map((block: any) => block.paragraph.rich_text[0].plain_text);
+  },
 };
 
 export default blogServices;

@@ -24,21 +24,27 @@ const fecha = DateTime.fromISO(Fecha_Publicacion.date.start.toString())
 </script>
 
 <template>
-  <BaseCard :isLink="true">
-    <template #header>
-      <img :src="cover" :alt="`${postTitle} cover`" class="aspect-square" />
-    </template>
+  <router-link :to="`/blog/${slug}`">
+    <BaseCard :isLink="true">
+      <template #header>
+        <img :src="cover" :alt="`${postTitle} cover`" class="aspect-square" />
+      </template>
 
-    <template #content>
-      <Header as="h2" customClass="text-gold">{{ postTitle }}</Header>
-      <p class="text-gray-400">Publicado el {{ fecha }}</p>
-      <p class="text-bone">{{ resumen }}</p>
-    </template>
+      <template #content>
+        <Header as="h2" customClass="text-gold">{{ postTitle }}</Header>
+        <p class="text-gray-400">Publicado el {{ fecha }}</p>
+        <p class="text-bone">{{ resumen }}</p>
+      </template>
 
-    <template #footer>
-      <Pill v-for="{ id, name } in etiquetas" :key="id" customClass="mr-2 mb-2">
-        {{ name }}</Pill
-      >
-    </template>
-  </BaseCard>
+      <template #footer>
+        <Pill
+          v-for="{ id, name } in etiquetas"
+          :key="id"
+          customClass="mr-2 mb-2"
+        >
+          {{ name }}</Pill
+        >
+      </template>
+    </BaseCard>
+  </router-link>
 </template>

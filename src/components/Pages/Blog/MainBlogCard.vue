@@ -24,28 +24,34 @@ const fecha = DateTime.fromISO(Fecha_Publicacion.date.start.toString())
 </script>
 
 <template>
-  <WideCard :isLink="true">
-    <template #aside>
-      <img
-        :src="cover"
-        :alt="`${postTitle} cover`"
-        class="object-cover w-full rounded-lg aspect-square"
-      />
-    </template>
+  <router-link :to="`/blog/${slug}`">
+    <WideCard :isLink="true">
+      <template #aside>
+        <img
+          :src="cover"
+          :alt="`${postTitle} cover`"
+          class="object-cover w-full rounded-lg aspect-square"
+        />
+      </template>
 
-    <template #header>
-      <Pill v-for="{ id, name } in etiquetas" :key="id" customClass="mr-2 mb-2">
-        {{ name }}</Pill
-      >
-    </template>
+      <template #header>
+        <Pill
+          v-for="{ id, name } in etiquetas"
+          :key="id"
+          customClass="mr-2 mb-2"
+        >
+          {{ name }}</Pill
+        >
+      </template>
 
-    <template #content>
-      <Header as="h2" customClass="text-gold">{{ postTitle }}</Header>
-      <p class="text-black-coffee">{{ resumen }}</p>
-    </template>
+      <template #content>
+        <Header as="h2" customClass="text-gold">{{ postTitle }}</Header>
+        <p class="text-black-coffee">{{ resumen }}</p>
+      </template>
 
-    <template #footer>
-      <p class="text-black-coffee">Publicado el {{ fecha }}</p>
-    </template>
-  </WideCard>
+      <template #footer>
+        <p class="text-black-coffee">Publicado el {{ fecha }}</p>
+      </template>
+    </WideCard>
+  </router-link>
 </template>

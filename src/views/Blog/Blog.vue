@@ -15,7 +15,6 @@ onBeforeMount(async () => {
   try {
     loading.value = true;
     const { data } = await BlogService.getPosts();
-    console.log({ data });
     posts.value = data;
   } catch (error) {
     console.error(error);
