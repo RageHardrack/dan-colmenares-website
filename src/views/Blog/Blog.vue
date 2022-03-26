@@ -4,6 +4,7 @@ import { BlogService } from "../../services";
 import Grid from "../../components/Layout/Grid.vue";
 import LoadingView from "../../components/Layout/LoadingView.vue";
 import { Publicacion } from "../../interfaces";
+import BlogCard from "../../components/Pages/Blog/BlogCard.vue";
 
 const posts = ref<Publicacion[]>([]);
 const loading = ref(false);
