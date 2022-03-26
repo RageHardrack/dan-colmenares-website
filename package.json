@@ -11,10 +11,12 @@
   "dependencies": {
     "@vueuse/core": "8.2.0",
     "axios": "0.26.1",
+    "luxon": "2.3.1",
     "vue": "3.2.31",
     "vue-router": "4.0.14"
   },
   "devDependencies": {
+    "@types/luxon": "2.3.1",
     "@vitejs/plugin-vue": "2.2.4",
     "autoprefixer": "10.4.4",
     "postcss": "8.4.12",

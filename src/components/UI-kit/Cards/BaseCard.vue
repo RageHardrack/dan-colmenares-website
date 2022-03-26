@@ -16,7 +16,7 @@ const { isLink = false } = defineProps<Props>();
       <slot name="header" />
     </header>
 
-    <section>
+    <section class="flex flex-col space-y-2">
       <slot name="content" />
     </section>
 

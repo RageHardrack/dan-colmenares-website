@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import BaseCard from "../../UI-kit/Cards/BaseCard.vue";
+import WideCard from "../../UI-kit/Cards/WideCard.vue";
 import Header from "../../Typography/Header.vue";
 import { Properties } from "../../../interfaces";
 import Pill from "../../UI-kit/Pills/Pill.vue";
@@ -24,25 +24,28 @@ const fecha = DateTime.fromISO(Fecha_Publicacion.date.start.toString())
 </script>
 
 <template>
-  <BaseCard :isLink="true">
-    <template #header>
+  <WideCard :isLink="true">
+    <template #aside>
       <img
         :src="cover"
         :alt="`${postTitle} cover`"
-        class="mb-4 aspect-square"
+        class="object-cover w-full rounded-lg aspect-square"
       />
-      <Header as="h2" customClass="text-gold">{{ postTitle }}</Header>
-      <p class="text-gray-400">Publicado el {{ fecha }}</p>
     </template>
 
-    <template #content>
-      <p class="text-bone">{{ resumen }}</p>
-    </template>
-
-    <template #footer>
+    <template #header>
       <Pill v-for="{ id, name } in etiquetas" :key="id" customClass="mr-2 mb-2">
         {{ name }}</Pill
       >
     </template>
-  </BaseCard>
+
+    <template #content>
+      <Header as="h2" customClass="text-gold">{{ postTitle }}</Header>
+      <p class="text-black-coffee">{{ resumen }}</p>
+    </template>
+
+    <template #footer>
+      <p class="text-black-coffee">Publicado el {{ fecha }}</p>
+    </template>
+  </WideCard>
 </template>

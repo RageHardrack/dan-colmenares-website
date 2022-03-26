@@ -29,6 +29,7 @@ export interface Properties {
   Tags: Tags;
   Fecha_Publicacion: FechaDePublicacion;
   Slug: ImageURL;
+  Brief: Brief;
   Post: Post;
 }
 
@@ -70,6 +71,12 @@ export interface Annotations {
 export interface Text {
   content: string;
   link: null;
+}
+
+export interface Brief {
+  id: string;
+  type: string;
+  rich_text: RichText[];
 }
 
 export interface Post {

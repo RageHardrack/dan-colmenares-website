@@ -4,6 +4,7 @@ const blogServices = {
   fetchPostDatabase: async () => {
     return await notion.databases.query({
       database_id: BLOG_ID,
+      page_size: 10,
       filter: {
         and: [
           {

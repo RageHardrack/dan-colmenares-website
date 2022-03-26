@@ -17,6 +17,7 @@ import { SOCIAL_MEDIA_LINKS } from "../../constantes";
           :key="social"
           target="_blank"
           :href="url"
+          class="transition duration-300 hover:text-gold"
         >
           {{ social }}
         </a>
