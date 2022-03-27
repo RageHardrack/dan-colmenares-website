@@ -1,20 +1,14 @@
 <script setup lang="ts">
 import MenuButton from "../UI-kit/Buttons/MenuButton.vue";
 import { ROUTES_LINKS } from "../../constantes";
-import { onClickOutside } from "@vueuse/core";
-import { ref } from "vue";
+import { inject } from "vue";
 import Logo from "./Logo.vue";
 
-const sideNav = ref(false);
-const target = ref(null);
-
-onClickOutside(target, () => (sideNav.value = false));
-
-const dropDown = () => (sideNav.value = !sideNav.value);
+const toggleSideNav = inject<() => boolean>("toggleSideNav");
 </script>
 
 <template>
-  <header class="flex items-center h-24 bg-primary" ref="target">
+  <header class="flex items-center h-24 bg-primary">
     <nav class="container flex items-center justify-between py-2">
       <router-link to="/">
         <Logo />
@@ -30,7 +24,7 @@ const dropDown = () => (sideNav.value = !sideNav.value);
         </li>
       </ul>
 
-      <MenuButton @pressButton="dropDown" class="flex md:hidden" />
+      <MenuButton @pressButton="toggleSideNav" class="flex md:hidden" />
     </nav>
   </header>
 </template>
