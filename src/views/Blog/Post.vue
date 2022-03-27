@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import LoadingView from "../../components/Layout/LoadingView.vue";
 import Header from "../../components/Typography/Header.vue";
 import { BlogService } from "../../services";
 import { useRoute } from "vue-router";
-import { onMounted, ref } from "vue";
+import { onBeforeMount, ref } from "vue";
 import { DateTime } from "luxon";
 import BaseLayout from "../../components/Layout/BaseLayout.vue";
 import Divider from "../../components/Layout/components/Divider.vue";
+import LoadingView from "../../components/Layout/components/LoadingView.vue";
 
 const cover = ref("");
 const title = ref("");
@@ -16,7 +16,7 @@ const loading = ref(false);
 
 const route = useRoute();
 
-onMounted(async () => {
+onBeforeMount(async () => {
   try {
     loading.value = true;
     const { data } = await BlogService.getPostBySlug(
@@ -30,11 +30,10 @@ onMounted(async () => {
       .setLocale("es")
       .toFormat("dd LLLL yyyy");
     content.value = data.content;
+    loading.value = false;
   } catch (error) {
     console.error(error);
     content.value = [];
-  } finally {
-    loading.value = false;
   }
 });
 </script>
