@@ -8,7 +8,15 @@ const linkServices = {
       sorts: [{ property: "Orden", direction: "ascending" }],
     });
 
-    return results.map((link: any) => link.properties);
+    return results
+      .map((link: any) => link.properties)
+      .map((property) => {
+        return {
+          Link: property.Link.url,
+          Orden: property.Orden.number,
+          Name: property.Name.title[0].plain_text,
+        };
+      });
   },
 };
 

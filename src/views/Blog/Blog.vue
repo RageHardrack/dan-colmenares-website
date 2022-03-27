@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onBeforeMount } from "vue";
+import { ref, onMounted } from "vue";
 import { BlogService } from "../../services";
 import Grid from "../../components/Layout/components/Grid.vue";
 import LoadingView from "../../components/Layout/components/LoadingView.vue";
@@ -12,7 +12,7 @@ import BaseLayout from "../../components/Layout/BaseLayout.vue";
 const posts = ref<Publicacion[]>([]);
 const loading = ref(false);
 
-onBeforeMount(async () => {
+onMounted(async () => {
   try {
     loading.value = true;
     const { data } = await BlogService.getPosts();

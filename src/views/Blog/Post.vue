@@ -6,6 +6,7 @@ import { useRoute } from "vue-router";
 import { onMounted, ref } from "vue";
 import { DateTime } from "luxon";
 import BaseLayout from "../../components/Layout/BaseLayout.vue";
+import Divider from "../../components/Layout/components/Divider.vue";
 
 const cover = ref("");
 const title = ref("");
@@ -55,7 +56,7 @@ onMounted(async () => {
         <p>Publicado el {{ date }}</p>
       </header>
 
-      <div class="w-full h-1 rounded-full bg-gold" />
+      <Divider />
 
       <article
         class="flex flex-col justify-start flex-1 space-y-4 text-justify"
