@@ -1,7 +1,7 @@
 import notion, { BLOG_ID } from "../notion";
 
 const blogServices = {
-  fetchPostDatabase: async () => {
+  fetchBlogDatabase: async () => {
     return await notion.databases.query({
       database_id: BLOG_ID,
       page_size: 10,

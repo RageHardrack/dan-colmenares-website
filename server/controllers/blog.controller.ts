@@ -4,11 +4,11 @@ import { Page } from "../interfaces";
 
 const blogController = {
   /**
-   * Get from Notion the posts with the Tag "Publicado"
+   * Get the posts with the Tag "Publicado" from Notion
    */
   getPosts: async (req: Request, res: Response) => {
     try {
-      const { results } = await blogServices.fetchPostDatabase();
+      const { results } = await blogServices.fetchBlogDatabase();
 
       const promises = results.map((page) => {
         return blogServices.fetchPostById(page.id);
@@ -17,6 +17,7 @@ const blogController = {
       const pages = (await Promise.all(promises)) as Page[];
       res.json(pages);
     } catch (error) {
+      console.log(error);
       res
         .status(500)
         .json({ message: "No se pudieron obtener las publicaciones" });
@@ -24,13 +25,13 @@ const blogController = {
   },
 
   /**
-   * Get from Notion the post content using the page slug
+   * Get the post content using the page slug from Notion
    */
   getPostContent: async (req: Request, res: Response) => {
     try {
       const { slug } = req.params;
 
-      const { results } = await blogServices.fetchPostDatabase();
+      const { results } = await blogServices.fetchBlogDatabase();
 
       const current = results.find(
         (r: any) => r.properties.Slug["rich_text"][0]["plain_text"] == slug
@@ -49,6 +50,7 @@ const blogController = {
 
       res.json({ properties, content });
     } catch (error) {
+      console.log(error);
       res
         .status(500)
         .json({ message: "No se pudo obtener el contenido de la Publicación" });
