@@ -1,16 +1,18 @@
 <script setup lang="ts">
 import LoadingView from "../../components/Layout/LoadingView.vue";
-import { Properties } from "../../interfaces";
+import Header from "../../components/Typography/Header.vue";
 import { BlogService } from "../../services";
 import { useRoute } from "vue-router";
 import { onMounted, ref } from "vue";
+import { DateTime } from "luxon";
 
-const properties = ref<Properties | {}>({});
+const cover = ref("");
+const title = ref("");
+const date = ref("");
 const content = ref<string[] | []>([]);
 const loading = ref(false);
 
 const route = useRoute();
-console.log(route.params.slug);
 
 onMounted(async () => {
   try {
@@ -18,12 +20,16 @@ onMounted(async () => {
     const { data } = await BlogService.getPostBySlug(
       route.params.slug as string
     );
-    console.log({ data });
-    properties.value = data.properties;
+    cover.value = data.properties.Image_URL.rich_text[0].plain_text;
+    title.value = data.properties.Post.title[0].text.content;
+    date.value = DateTime.fromISO(
+      data.properties.Fecha_Publicacion.date.start.toString()
+    )
+      .setLocale("es")
+      .toFormat("dd LLLL yyyy");
     content.value = data.content;
   } catch (error) {
     console.error(error);
-    properties.value = {};
     content.value = [];
   } finally {
     loading.value = false;
@@ -34,8 +40,22 @@ onMounted(async () => {
 <template>
   <LoadingView loadMessage="Cargando Publicación" v-if="loading" />
 
-  <section v-else>
-    <article class="flex flex-col justify-start space-y-4 text-justify">
+  <section v-else class="flex flex-col justify-center space-y-8">
+    <header class="flex flex-col space-y-4">
+      <div class="w-full md:h-[40vh] overflow-hidden">
+        <img
+          :src="cover"
+          :alt="`Banner ${title}`"
+          class="object-bottom objet-cover"
+        />
+      </div>
+      <Header as="h1">{{ title }}</Header>
+      <p>Publicado el {{ date }}</p>
+    </header>
+
+    <div class="w-full h-1 rounded-full bg-gold" />
+
+    <article class="flex flex-col justify-start flex-1 space-y-4 text-justify">
       <p v-for="(paragraph, idx) in content" :key="idx">
         {{ paragraph }}
       </p>
