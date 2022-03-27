@@ -5,6 +5,7 @@ import { BlogService } from "../../services";
 import { useRoute } from "vue-router";
 import { onMounted, ref } from "vue";
 import { DateTime } from "luxon";
+import BaseLayout from "../../components/Layout/BaseLayout.vue";
 
 const cover = ref("");
 const title = ref("");
@@ -38,27 +39,31 @@ onMounted(async () => {
 </script>
 
 <template>
-  <LoadingView loadMessage="Cargando Publicación" v-if="loading" />
+  <BaseLayout>
+    <LoadingView loadMessage="Cargando Publicación" v-if="loading" />
 
-  <section v-else class="flex flex-col justify-center space-y-8">
-    <header class="flex flex-col space-y-4">
-      <div class="w-full md:h-[40vh] overflow-hidden">
-        <img
-          :src="cover"
-          :alt="`Banner ${title}`"
-          class="object-bottom objet-cover"
-        />
-      </div>
-      <Header as="h1">{{ title }}</Header>
-      <p>Publicado el {{ date }}</p>
-    </header>
+    <section v-else class="flex flex-col justify-center space-y-8">
+      <header class="flex flex-col space-y-4">
+        <div class="w-full md:h-[40vh] overflow-hidden">
+          <img
+            :src="cover"
+            :alt="`Banner ${title}`"
+            class="object-bottom objet-cover"
+          />
+        </div>
+        <Header as="h1">{{ title }}</Header>
+        <p>Publicado el {{ date }}</p>
+      </header>
 
-    <div class="w-full h-1 rounded-full bg-gold" />
+      <div class="w-full h-1 rounded-full bg-gold" />
 
-    <article class="flex flex-col justify-start flex-1 space-y-4 text-justify">
-      <p v-for="(paragraph, idx) in content" :key="idx">
-        {{ paragraph }}
-      </p>
-    </article>
-  </section>
+      <article
+        class="flex flex-col justify-start flex-1 space-y-4 text-justify"
+      >
+        <p v-for="(paragraph, idx) in content" :key="idx">
+          {{ paragraph }}
+        </p>
+      </article>
+    </section>
+  </BaseLayout>
 </template>

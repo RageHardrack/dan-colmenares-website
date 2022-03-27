@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import MenuButton from "../UI-kit/Buttons/MenuButton.vue";
-import { ROUTES_LINKS } from "../../constantes";
+import MenuButton from "../../UI-kit/Buttons/MenuButton.vue";
+import { ROUTES_LINKS } from "../../../constantes";
 import { inject } from "vue";
 import Logo from "./Logo.vue";
 

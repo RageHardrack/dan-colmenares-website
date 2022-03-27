@@ -1,3 +1,9 @@
+<script setup lang="ts">
+import BaseLayout from "../components/Layout/BaseLayout.vue";
+</script>
+
 <template>
-  <h2>Hola Daniel</h2>
+  <BaseLayout>
+    <h2>Hola Daniel</h2>
+  </BaseLayout>
 </template>

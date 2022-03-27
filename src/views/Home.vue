@@ -1,5 +1,9 @@
+<script setup lang="ts">
+import BaseLayout from "../components/Layout/BaseLayout.vue";
+</script>
+
 <template>
-  <section>
+  <BaseLayout>
     <h1>Hola mundo</h1>
     <p>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos illum
@@ -7,5 +11,5 @@
       dolorem obcaecati tempora corrupti, dolor eos quae? Est sit itaque amet
       eos!
     </p>
-  </section>
+  </BaseLayout>
 </template>

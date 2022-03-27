@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import Loading from "../Loaders/Loading.vue";
-import Header from "../Typography/Header.vue";
+import Loading from "../../Loaders/Loading.vue";
+import Header from "../../Typography/Header.vue";
 
 interface Props {
   loadMessage: string;

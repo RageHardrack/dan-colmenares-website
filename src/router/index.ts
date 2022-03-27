@@ -17,6 +17,11 @@ const routes: RouteRecordRaw[] = [
     name: "Post",
     component: () => import("../views/Blog/Post.vue"),
   },
+  {
+    path: "/social-share",
+    name: "SocialShare",
+    component: () => import("../views/LinkTree/SocialShare.vue"),
+  },
 ];
 
 const router = createRouter({

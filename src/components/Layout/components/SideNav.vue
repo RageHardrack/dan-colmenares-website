@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import CrossSvg from "../UI-kit/Icons/CrossSvg.vue";
-import { ROUTES_LINKS } from "../../constantes";
+import CrossSvg from "../../UI-kit/Icons/CrossSvg.vue";
+import { ROUTES_LINKS } from "../../../constantes";
 import { inject } from "vue";
 
 const toggleSideNav = inject<() => boolean>("toggleSideNav");

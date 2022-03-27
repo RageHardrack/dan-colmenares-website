@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Logo from "./Logo.vue";
-import { SOCIAL_MEDIA_LINKS } from "../../constantes";
+import { SOCIAL_MEDIA_LINKS } from "../../../constantes";
 </script>
 
 <template>
